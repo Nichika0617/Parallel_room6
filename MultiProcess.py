@@ -15,11 +15,14 @@ numbers = [10**18+3, 10**17+13, 10**17+19, 10**15+21, 10**14+49]
 numbers = [3,5,7,11,17]
 
 start = time.time()
-for i in numbers:
-    ans = search_prime(i)
-    if ans == True:
-        print("{n}:Prime Number".format(n=i))
-    else:
-        print("{n}:Not Prime Number".format(n=i))
+with futures.ProcessPoolExecutor() as executor:
+    mappings = {executor.submit(search_prime, n): n for n in numbers}
+    for future in futures.as_completed(mappings):
+        target = mappings[future]
+        result = future.result()
+        if result == True:
+            print("{n}:Prime Number".format(n=target))
+        else:
+            print("{n}:Not Prime Number".format(n=target))
 end = time.time()
 print(end - start)
