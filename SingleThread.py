@@ -12,7 +12,7 @@ def search_prime(x):
     return True
 
 numbers = [10**18+3, 10**17+13, 10**17+19, 10**15+21, 10**14+49]
-numbers = [3,5,7,11,17]
+# numbers = [3,5,7,11,17]  # 実行テスト
 
 start = time.time()
 for i in numbers:
@@ -22,4 +22,5 @@ for i in numbers:
     else:
         print("{n}:Not Prime Number".format(n=i))
 end = time.time()
-print(end - start)
+
+print("以上 {}個の素数判別にかかった時間は {} 秒でした．".format(len(numbers),end - start))
