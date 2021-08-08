@@ -1,5 +1,4 @@
 import time
-from concurrent import futures
 
 def search_prime(x):
     if x % 2 == 0:
