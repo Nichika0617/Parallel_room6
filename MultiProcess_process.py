@@ -3,8 +3,8 @@ from multiprocessing import Process
 # processモジュールを使用したマルチプロセス
 
 def search_prime(x):
-    isprime = 0 #素数なら0
-    # エラトステネスのふるい
+    isprime = 0 #素数なら最後まで0のまま
+    # エラトステネスのふるいで素数判別を行う関数
     if x % 2 == 0:
         isprime+=1
         
